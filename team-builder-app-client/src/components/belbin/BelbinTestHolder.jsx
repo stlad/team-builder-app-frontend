@@ -9,7 +9,7 @@ const BelbinTestHolder = () =>{
     const [allBlanks, setAllBlanks] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [commitFlag, setCommitFlag] = useState(true)
-    const [isTestOver, setIsTestOver] = useState(false)
+    //const [isTestOver, setIsTestOver] = useState(false)
 
     useEffect(()=>{
         belbinApi.getQuestionBlank().then(r=>r.json())
@@ -20,13 +20,17 @@ const BelbinTestHolder = () =>{
 
     useEffect(()=>{
         console.log(finalBlank)
+        if(currentPage===7){
+            console.log("ТЕСТ ПРОЙДЕН")
+            getResults(finalBlank)
+        }
     }, [finalBlank])
 
-    useEffect(()=>{
-        console.log("ТЕСТ ПРОЙДЕН")
-        console.log(finalBlank)
-        getResults(finalBlank)
-    }, [isTestOver])
+    // useEffect(()=>{
+    //     console.log("ТЕСТ ПРОЙДЕН")
+    //     console.log(finalBlank)
+    //     getResults(finalBlank)
+    // }, [isTestOver])
 
     const getResults = ()=>{
         belbinApi.postQuestionBlank({"blank":finalBlank}).then(resp => resp.json())
@@ -39,9 +43,9 @@ const BelbinTestHolder = () =>{
             setCommitFlag(!commitFlag)
             return
         }
-        if(currentPage == 7){
+        if(currentPage === 7){
             setCommitFlag(!commitFlag)
-            setIsTestOver(true)
+            // setIsTestOver(true)
             return
         }
     }
