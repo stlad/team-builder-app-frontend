@@ -7,6 +7,7 @@ const BelbinTestMainPage = () =>{
     const [currentTestBlockNumber, setCurrentTestBlockNumber] = useState(0);
     const [blockInfo, setblockInfo] = useState(null)
     const [questions, setQuestions] = useState(null)
+    const [pointsLeftPerblock, setPointsLeftPerblock] = useState(10);
 
 
     useEffect(()=>{
@@ -22,6 +23,7 @@ const BelbinTestMainPage = () =>{
             .then(resp => {
                 setblockInfo(resp.blockQuestion);
                 setQuestions(resp.questions)
+                setPointsLeftPerblock(10)
             })
         }
     },[currentTestBlockNumber])
@@ -33,6 +35,12 @@ const BelbinTestMainPage = () =>{
     useEffect(()=>{
        // console.log(questions);
     },[questions]); 
+
+    
+
+    useEffect(()=>{
+         console.log(questionBlank);
+     },[questionBlank]); 
 
     const nextPage = () =>{
         if(currentTestBlockNumber < 8){
@@ -46,15 +54,26 @@ const BelbinTestMainPage = () =>{
         }
     }
 
+    const updateBlank = (key, valueToAdd) =>{
+        setQuestionBlank({
+            ...questionBlank,
+            [key] : questionBlank[key]+valueToAdd
+        })
+    }
+
     return (
         <div>
             <div>
                 <p>{blockInfo?.blockContent}</p>
+                <p>Осталось распределить: {pointsLeftPerblock} очков</p>
             </div>
             <div>
                 {questions?.map(qst =>
                     <div key={qst?.id}>
-                        <QuestionCard getBlank={()=>questionBlank} question={qst}/>
+                        <QuestionCard getBlank={()=>questionBlank} 
+                        addToBlank={(k,v) => updateBlank(k,v)} 
+                        question={qst}
+                        pointsLeft={()=>pointsLeftPerblock}/>
                     </div>
                 )}
             </div>
