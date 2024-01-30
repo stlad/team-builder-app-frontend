@@ -19,9 +19,13 @@ class BelbinApi{
     }
 
     
-    postQuestionBlank(){
+    postQuestionBlank(answerBlank){
         return fetch(this.contextUrl+"/questions/blank", {
-            method:"POST"
+            method:"POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:JSON.stringify(answerBlank)
         });
     }
 
