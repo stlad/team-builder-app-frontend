@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import belbinApi from '../../globals/api';
 import QuestionCard from './questions/QuestionCard';
 import BelbinTestBlock from './BelbinTestBlock';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const BelbinTestHolder = () =>{
 
@@ -9,7 +11,8 @@ const BelbinTestHolder = () =>{
     const [allBlanks, setAllBlanks] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [commitFlag, setCommitFlag] = useState(true)
-    //const [isTestOver, setIsTestOver] = useState(false)
+    const navigate = useNavigate()
+    
 
     useEffect(()=>{
         belbinApi.getQuestionBlank().then(r=>r.json())
@@ -18,56 +21,50 @@ const BelbinTestHolder = () =>{
     },[])
 
     useEffect(()=>{
-        console.log(finalBlank)
-        if(currentPage===7){
-            console.log("ТЕСТ ПРОЙДЕН")
-            getResults(finalBlank)
-        }
-    }, [finalBlank])
+        // console.log("Page "+currentPage)
+    },[currentPage])
 
-    const getResults = ()=>{
-        belbinApi.postQuestionBlank({"blank":finalBlank}).then(resp => resp.json())
-        .then(resp => console.log(resp))
-    }
+    useEffect(()=>{
+        // console.log("blank updated ")
+        if(currentPage === 8){
+            console.log("ТЕСТ ПРОЙДЕН")
+            navigate('/belbin/results' ,{
+                state: {blank:finalBlank}
+            })
+        }
+    },[finalBlank])
 
     const nextPage = () =>{
-        if(currentPage < 7){
+        if(currentPage <= 7){
             setCurrentPage(currentPage + 1);
             setCommitFlag(!commitFlag)
             return
         }
-        if(currentPage === 7){
+        if(currentPage === 8){
             setCommitFlag(!commitFlag)
-            return
-        }
-    }
-
-    const prevPage = () =>{
-        if(currentPage > 1){
-            setCurrentPage(currentPage - 1);
         }
     }
 
     const getBlankFromPage = (blank)=>{
-        if(currentPage > 1 && currentPage < 8 ){
+        if(currentPage > 1 && currentPage <= 8 ){
             allBlanks.push(blank)
             let newFinal = {}
 
             for(let key of Object.keys(finalBlank)){
                 newFinal[key] = finalBlank[key] + blank[key]
             }
-            setFinalBlank(newFinal)            
+            setFinalBlank(newFinal)
+                      
         }
     }
 
     return (
         <div>
-            <BelbinTestBlock page={currentPage} blankHolder={getBlankFromPage} commitFlag={commitFlag} getBlank = {getBlankFromPage}/>
-            <button onClick={prevPage}>Назад</button>
-            <button onClick={nextPage}>Дальше</button>
+            <BelbinTestBlock page={currentPage} blankHolder={getBlankFromPage} commitFlag={commitFlag} getBlank = {getBlankFromPage}/> 
+                {/* <button onClick={prevPage}>Назад</button> */}
+            <Button variant="contained" onClick={nextPage}>Дальше</Button>
         </div>
     )
-
 }
 
 export default BelbinTestHolder;

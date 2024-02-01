@@ -1,23 +1,13 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import BelbinTestMainPage from '../belbin/BelbinTestMainPage';
 import BelbinTHeader from '../belbin/BelbinHeader';
 import BelbinTestHolder from '../belbin/BelbinTestHolder';
+import BelbinResults from '../belbin/BelbinResults';
 
 const AppRoutes  = (props) =>{
     
     return (
     <BrowserRouter>
         <Routes>
-            {/* <Route 
-                path='/'
-                element = {
-                    <div >
-                        <BelbinTHeader />
-                        <BelbinTestMainPage  />
-                    </div>
-            }
-            /> */}
-
             <Route path='/' 
                 element={
                     <div>
@@ -25,7 +15,13 @@ const AppRoutes  = (props) =>{
                         <BelbinTestHolder />
                     </div>
                 }/>
-
+            <Route path='/belbin/results' 
+                element={
+                    <div>
+                        <BelbinTHeader />
+                        <BelbinResults />
+                    </div>
+                }/>
         </Routes>
     </BrowserRouter>
 )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import belbinApi from '../../globals/api';
 import QuestionCard from './questions/QuestionCard';
-import Slider from '@mui/material/Slider'
+import Slider from '@mui/material/Slider';
 
 const BelbinTestBlock = (props)=>{
 
@@ -15,6 +15,7 @@ const BelbinTestBlock = (props)=>{
         belbinApi.getQuestionBlank().then(r=>r.json())
         .then(blank=> setCurrentBlank(blank.blank));
 
+        if(props.page === 8 ) return
         belbinApi.getQuestionBlock(props.page).then(resp=>resp.json())
             .then(resp => {
                 setBlockInfo(resp.blockQuestion);
@@ -44,12 +45,15 @@ const BelbinTestBlock = (props)=>{
             [key] : valueToAdd
         })
     }
+
     const handleSliderChange = (event, newValue, activeThumb) =>{
         let val = Number(event.target.value);
         updateBlank(event.target.name, newValue)
     }
 
-
+    const marks = [];
+    [0,1,2,3,4,5,6,7,8,9,10].map(num=>marks.push({value:num, label:num}))
+ 
     return (
         <div>
             <div>
@@ -61,17 +65,20 @@ const BelbinTestBlock = (props)=>{
                 {questions?.map(qst =>
                     <div key={qst?.id}>
                         <QuestionCard getBlank={()=>currentBlank} 
-                        addToBlank={(k,v) => updateBlank(k,v)} 
-                        question={qst}
-                        />
+                            addToBlank={(k,v) => updateBlank(k,v)} 
+                            question={qst}/>
 
                         <div style={{width: "30em", margin: "auto" }}>
-                            <Slider aria-label="points" defaultValue={0} valueLabelDisplay="on" 
-                            step={1} marks min={0} max={10} 
-                            onChange={handleSliderChange} name={qst.attachedRole.engName}/>
+                            <Slider aria-label="points" defaultValue={0} valueLabelDisplay="auto"
+                                step={1} marks={marks} min={0} max={10}
+                                color="secondary" 
+                                onChange={handleSliderChange} name={qst.attachedRole.engName}/>
                         </div>
                     </div>
                 )}
+            </div>
+            <div>
+                <p>Страница  {blockInfo?.number} / 7</p>
             </div>
         </div>
     )
