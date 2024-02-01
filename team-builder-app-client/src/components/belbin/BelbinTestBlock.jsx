@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import belbinApi from '../../globals/api';
 import QuestionCard from './questions/QuestionCard';
+import Slider from '@mui/material/Slider'
 
 const BelbinTestBlock = (props)=>{
 
     const [currentBlank, setCurrentBlank] = useState(null)
     const [questions, setQuestions] = useState(null)
     const [blockInfo, setBlockInfo] = useState(null)
+    const [maxPoints, setMaxPoint] = useState(10)
+    const [pointsLeft, setPointsLeft] = useState(10)
 
     useEffect(()=>{
         belbinApi.getQuestionBlank().then(r=>r.json())
@@ -17,12 +20,16 @@ const BelbinTestBlock = (props)=>{
                 setBlockInfo(resp.blockQuestion);
                 setQuestions(resp.questions)
             })
-
-
     }, [props])
 
     useEffect(()=>{
-        //console.log(currentBlank)
+        let sum=0;
+        if(currentBlank === null) return;
+        for(let key of Object.keys(currentBlank)){
+            sum += currentBlank[key];
+        }
+        setPointsLeft(maxPoints - sum)
+
     },[currentBlank])
 
     useEffect(()=>{
@@ -37,13 +44,17 @@ const BelbinTestBlock = (props)=>{
             [key] : valueToAdd
         })
     }
+    const handleSliderChange = (event, newValue, activeThumb) =>{
+        let val = Number(event.target.value);
+        updateBlank(event.target.name, newValue)
+    }
 
 
     return (
         <div>
             <div>
                 <p>{blockInfo?.blockContent}</p>
-                {/* <p>Осталось распределить: {pointsLeftPerblock} очков</p> */}
+                <p>Осталось распределить: {pointsLeft} очков</p>
             </div>
 
             <div>
@@ -53,6 +64,12 @@ const BelbinTestBlock = (props)=>{
                         addToBlank={(k,v) => updateBlank(k,v)} 
                         question={qst}
                         />
+
+                        <div style={{width: "30em", margin: "auto" }}>
+                            <Slider aria-label="points" defaultValue={0} valueLabelDisplay="on" 
+                            step={1} marks min={0} max={10} 
+                            onChange={handleSliderChange} name={qst.attachedRole.engName}/>
+                        </div>
                     </div>
                 )}
             </div>

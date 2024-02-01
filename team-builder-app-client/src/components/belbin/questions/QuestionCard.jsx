@@ -19,26 +19,11 @@ const QuestionCard = (props) =>{
         console.log(props.getBlank()[role.engName]);
     }
 
-
-    const handleInputChange = (event) =>{
-        let val = Number(event.target.value);
-        props.addToBlank(role.engName, val)
-        // let roleName = role.engName;
-        // props.addToBlank(roleName, val);
-    } 
-
-    const handleSaveResult = ()=>{
-        let val = tempValue;
-        let roleName = role.engName;
-        props.addToBlank(roleName, val);
-    }
-
     return (
         <div>
 
             <p>{question?.number % 10}. {question?.content}.</p>
-            <button onClick={printRole}>Роль</button>
-            <input type='number' onChange={handleInputChange}></input>
+            {/* <button onClick={printRole}>Роль</button> */}
         </div>
     )
 }

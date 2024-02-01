@@ -14,7 +14,6 @@ const BelbinTestHolder = () =>{
     useEffect(()=>{
         belbinApi.getQuestionBlank().then(r=>r.json())
         .then(blank => setFinalBlank(blank.blank));
-
         setCurrentPage(1)
     },[])
 
@@ -25,12 +24,6 @@ const BelbinTestHolder = () =>{
             getResults(finalBlank)
         }
     }, [finalBlank])
-
-    // useEffect(()=>{
-    //     console.log("ТЕСТ ПРОЙДЕН")
-    //     console.log(finalBlank)
-    //     getResults(finalBlank)
-    // }, [isTestOver])
 
     const getResults = ()=>{
         belbinApi.postQuestionBlank({"blank":finalBlank}).then(resp => resp.json())
@@ -45,7 +38,6 @@ const BelbinTestHolder = () =>{
         }
         if(currentPage === 7){
             setCommitFlag(!commitFlag)
-            // setIsTestOver(true)
             return
         }
     }
