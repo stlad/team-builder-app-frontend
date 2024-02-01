@@ -11,6 +11,7 @@ const BelbinTestHolder = () =>{
     const [allBlanks, setAllBlanks] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [commitFlag, setCommitFlag] = useState(true)
+    const [nextPageAvaliable, setNextAvailable] = useState(false)
     const navigate = useNavigate()
     
 
@@ -19,10 +20,6 @@ const BelbinTestHolder = () =>{
         .then(blank => setFinalBlank(blank.blank));
         setCurrentPage(1)
     },[])
-
-    useEffect(()=>{
-        // console.log("Page "+currentPage)
-    },[currentPage])
 
     useEffect(()=>{
         // console.log("blank updated ")
@@ -60,9 +57,9 @@ const BelbinTestHolder = () =>{
 
     return (
         <div>
-            <BelbinTestBlock page={currentPage} blankHolder={getBlankFromPage} commitFlag={commitFlag} getBlank = {getBlankFromPage}/> 
+            <BelbinTestBlock page={currentPage} commitFlag={commitFlag} getBlank = {getBlankFromPage} allowNext={setNextAvailable}/> 
                 {/* <button onClick={prevPage}>Назад</button> */}
-            <Button variant="contained" onClick={nextPage}>Дальше</Button>
+            <Button variant="contained" onClick={nextPage} disabled={!nextPageAvaliable}>Дальше</Button>
         </div>
     )
 }

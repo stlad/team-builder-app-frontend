@@ -21,7 +21,7 @@ const BelbinTestBlock = (props)=>{
                 setBlockInfo(resp.blockQuestion);
                 setQuestions(resp.questions)
             })
-    }, [props])
+    }, [props.page])
 
     useEffect(()=>{
         let sum=0;
@@ -34,12 +34,17 @@ const BelbinTestBlock = (props)=>{
     },[currentBlank])
 
     useEffect(()=>{
+        props.allowNext(pointsLeft ===0)
+    }, [pointsLeft])
+
+
+    useEffect(()=>{
         props.getBlank(currentBlank)
     }, [props.commitFlag])
 
 
     const updateBlank = (key, valueToAdd) =>{
-        console.log(key, valueToAdd)
+        //console.log(key, valueToAdd)
         setCurrentBlank({
             ...currentBlank,
             [key] : valueToAdd
