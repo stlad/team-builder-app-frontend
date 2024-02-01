@@ -3,6 +3,7 @@ import belbinApi from '../../globals/api';
 import QuestionCard from './questions/QuestionCard';
 import Slider from '@mui/material/Slider';
 import { useLocation } from "react-router-dom";
+import BelbinResultCharts from './charts/BelbinResultChart';
 
 const BelbinResults = (props) =>{
     const location = useLocation();
@@ -17,15 +18,41 @@ const BelbinResults = (props) =>{
         }
     }, [])
 
-    useEffect(()=>{
-    }, [scores])
+    useEffect(()=>{},[scores])
 
     return (
         <div>
-            {scores?.map(score =>
-            <div key={score?.role.id}>
-                <p>{score.role.rusName} ({score.role.engName}) {score.score}</p> 
-            </div>)}
+            <div>
+                <BelbinResultCharts scores={scores}/>
+            </div>
+
+            <div>
+                <table >
+                    <thead>
+
+                    <tr>
+                        <th>Номер</th>
+                        <th>Значение</th>
+                        <th>Роль (рус)</th>
+                        <th>Роль (eng)</th>
+                        <th>Описание</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        {scores?.map((score, index) =>
+                        <tr key={score?.role.id}>
+                            <td ><p>{index+1}</p></td>
+                            <td><p>{score.score}</p></td>
+                            <td><p>{score.role.rusName}</p></td>
+                            <td><p>{score.role.engName}</p></td>
+                            <td><p>{score.role.description}</p></td>
+                        </tr>)}
+                    </tbody>
+                </table>
+            </div>
+
+            
         </div>
     )
 }
