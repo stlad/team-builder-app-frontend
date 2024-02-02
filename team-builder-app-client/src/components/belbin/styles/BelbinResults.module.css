@@ -1,0 +1,16 @@
+td {
+    border: 1px solid black
+}
+
+th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.descr {
+    margin-left: 20px;
+    text-align: justify;
+}

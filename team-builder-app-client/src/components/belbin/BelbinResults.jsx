@@ -4,6 +4,7 @@ import QuestionCard from './questions/QuestionCard';
 import Slider from '@mui/material/Slider';
 import { useLocation } from "react-router-dom";
 import BelbinResultCharts from './charts/BelbinResultChart';
+import classes from './styles/BelbinResults.module.css'
 
 const BelbinResults = (props) =>{
     const location = useLocation();
@@ -32,7 +33,7 @@ const BelbinResults = (props) =>{
 
                     <tr>
                         <th>Номер</th>
-                        <th>Значение</th>
+                        <th>Баллы</th>
                         <th>Роль (рус)</th>
                         <th>Роль (eng)</th>
                         <th>Описание</th>
@@ -46,7 +47,7 @@ const BelbinResults = (props) =>{
                             <td><p>{score.score}</p></td>
                             <td><p>{score.role.rusName}</p></td>
                             <td><p>{score.role.engName}</p></td>
-                            <td><p>{score.role.description}</p></td>
+                            <td><p className={`${classes.descr}`}>{score.role.description}</p></td>
                         </tr>)}
                     </tbody>
                 </table>
