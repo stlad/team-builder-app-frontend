@@ -1,9 +1,11 @@
 
 class BelbinApi{
     constructor(){
-        this.host = process.env.REACT_APP_BELBIN_API_HOST;
-        this.contextPath = process.env.REACT_APP_BELBIN_API_CONTEXT_PATH;
+        let isDev = false //change to false before  build
+        this.host =document.location.protocol + "//" +document.location.hostname + (isDev ? ":8090" : ""); 
+        this.contextPath = '/api/belbin';
         this.contextUrl=this.host+this.contextPath;
+        console.log("Server address: "+this.host);
     }
 
     getRoleByName(name){
