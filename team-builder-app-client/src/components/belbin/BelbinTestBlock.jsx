@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import belbinApi from '../../globals/api';
+import {belbinApi} from '../../globals/api';
 import QuestionCard from './questions/QuestionCard';
 import Slider from '@mui/material/Slider';
 

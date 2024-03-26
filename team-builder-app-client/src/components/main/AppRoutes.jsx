@@ -9,7 +9,7 @@ const AppRoutes  = (props) =>{
     return (
     <BrowserRouter>
         <Routes>
-            <Route path='/' 
+            <Route path='/belbin' 
                 element={
                     <div>
                         <BelbinTHeader />

@@ -1,11 +1,12 @@
 
+const isDev = true //change to false before  build
+
 class BelbinApi{
     constructor(){
-        let isDev = false //change to false before  build
         this.host =document.location.protocol + "//" +document.location.hostname + (isDev ? ":8090" : ""); 
         this.contextPath = '/api/belbin';
         this.contextUrl=this.host+this.contextPath;
-        console.log("Server address: "+this.host);
+        console.log("Belbin Server address: "+this.host);
     }
 
     getRoleByName(name){
@@ -39,6 +40,23 @@ class BelbinApi{
 }
 
 
-const belbinApi = new BelbinApi();
+class AdminApi{
+    constructor(){
+        this.host =document.location.protocol + "//" +document.location.hostname + (isDev ? ":8095" : ""); 
+        this.contextPath = '/api/admin';
+        this.contextUrl=this.host+this.contextPath;
+        console.log("Admin Server address: "+this.host);
+    }
+    
+    getUserById(id){
+        return fetch(this.contextUrl+"/users/"+id, {
+            method:"GET"
+        });
+    }
 
-export default belbinApi;
+}
+
+const belbinApi = new BelbinApi();
+const adminApi = new AdminApi();
+
+export {belbinApi, adminApi};
