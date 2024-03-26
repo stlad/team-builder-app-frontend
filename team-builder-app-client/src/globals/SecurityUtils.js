@@ -6,6 +6,7 @@ class SecurityUtils{
         localStorage.setItem("username", "testusername");
         localStorage.setItem("firstname", "Никита");
         localStorage.setItem("lastname", "Никитин");
+        window.location.reload();
     }
     
     logout = ()=>{
@@ -14,6 +15,7 @@ class SecurityUtils{
         localStorage.removeItem("username");
         localStorage.removeItem("firstname");
         localStorage.removeItem("lastname");
+        window.location.href = '/';
     }
     
     getCurrentUserId = ()=> localStorage.getItem("user_id");

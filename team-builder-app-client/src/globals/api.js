@@ -70,8 +70,8 @@ class HardSkillsApi{
         });
     }
 
-    postResult(results){
-        return fetch(this.contextUrl+"/results/", {
+    postResult(results, userId){
+        return fetch(this.contextUrl+"/results/"+userId, {
             method:"POST",
             headers: {
               "Content-Type": "application/json",
@@ -80,6 +80,11 @@ class HardSkillsApi{
         });
     }
 
+    getAllUsersRoles(id){
+            return fetch(this.contextUrl+"/results/user/"+id, {
+                method:"GET"
+            });
+        }
 }
 
 const belbinApi = new BelbinApi();
