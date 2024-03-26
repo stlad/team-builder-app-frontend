@@ -56,7 +56,24 @@ class AdminApi{
 
 }
 
+class HardSkillsApi{
+    constructor(){
+        this.host =document.location.protocol + "//" +document.location.hostname + (isDev ? ":8091" : ""); 
+        this.contextPath = '/api/hardskills';
+        this.contextUrl=this.host+this.contextPath;
+        console.log("Hardskills Server address: "+this.host);
+    }
+    
+    getAllRoles(id){
+        return fetch(this.contextUrl+"/roles/all", {
+            method:"GET"
+        });
+    }
+
+}
+
 const belbinApi = new BelbinApi();
 const adminApi = new AdminApi();
+const hardskillsApi = new HardSkillsApi();
 
-export {belbinApi, adminApi};
+export {belbinApi, adminApi,hardskillsApi};
