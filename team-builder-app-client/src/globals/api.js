@@ -70,6 +70,16 @@ class HardSkillsApi{
         });
     }
 
+    postResult(results){
+        return fetch(this.contextUrl+"/results/", {
+            method:"POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:JSON.stringify(results)
+        });
+    }
+
 }
 
 const belbinApi = new BelbinApi();

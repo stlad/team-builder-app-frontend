@@ -6,6 +6,7 @@ import BelbinFooter from '../belbin/BelbinFooter';
 import HardSkillsPage from '../hardskills/HardSkillsPage';
 import MainPage from './MainPage';
 import LoginHeader from './LoginHeader';
+import HardSkillsFooter from '../hardskills/HardSkillsFooter';
 
 const AppRoutes  = (props) =>{
     
@@ -23,7 +24,7 @@ const AppRoutes  = (props) =>{
             <Route path='/belbin' 
                 element={
                     <div>
-                    <LoginHeader />
+                        <LoginHeader />
                         <BelbinTHeader />
                         <BelbinTestHolder />
                         <BelbinFooter />
@@ -40,7 +41,9 @@ const AppRoutes  = (props) =>{
             <Route path='/hardskills'
                 element={
                     <div>
+                        <LoginHeader />
                         <HardSkillsPage />
+                        <HardSkillsFooter />
                     </div>
                 }/>
         </Routes>
