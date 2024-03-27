@@ -73,7 +73,12 @@ const HardSkillsPage = () =>{
                         <MenuItem  value={-1}>Нет</MenuItem>
 
                         {catalog.map(role => {
-                            return (<MenuItem key={role.role.id} value={role.role.id}>{role.role.rusName} ({role.currentCount}/{role.quota})</MenuItem> )
+                            return (<MenuItem 
+                                key={role.role.id} 
+                                value={role.role.id} 
+                                disabled={(role.quota - role.currentCount) <= 0}>
+                                {role.role.rusName} ({role.currentCount}/{role.quota})
+                            </MenuItem> )
                         })}
                     </Select>
                 </Box>
