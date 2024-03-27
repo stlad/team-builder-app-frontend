@@ -64,14 +64,14 @@ class HardSkillsApi{
         console.log("Hardskills Server address: "+this.host);
     }
     
-    getAllRoles(id){
-        return fetch(this.contextUrl+"/roles/all", {
+    getAllRoles(){
+        return fetch(this.contextUrl+"/results/catalog", {
             method:"GET"
         });
     }
 
-    postResult(results, userId){
-        return fetch(this.contextUrl+"/results/"+userId, {
+    postResult(results){
+        return fetch(this.contextUrl+"/results/", {
             method:"POST",
             headers: {
               "Content-Type": "application/json",
@@ -80,7 +80,7 @@ class HardSkillsApi{
         });
     }
 
-    getAllUsersRoles(id){
+    getUserRole(id){
             return fetch(this.contextUrl+"/results/user/"+id, {
                 method:"GET"
             });
