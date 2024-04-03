@@ -5,6 +5,8 @@ import Slider from '@mui/material/Slider';
 import { useLocation } from "react-router-dom";
 import BelbinResultCharts from './charts/BelbinResultChart';
 import classes from './styles/BelbinResults.module.css'
+import Button from '@mui/material/Button';
+import { securityUtils } from '../../globals/SecurityUtils';
 
 const BelbinResults = (props) =>{
     const location = useLocation();
@@ -20,6 +22,10 @@ const BelbinResults = (props) =>{
     }, [])
 
     useEffect(()=>{},[scores])
+
+    const handleSaveResult = ()=>{
+        belbinApi.postUserResult(securityUtils.getCurrentUserId(), scores[0].role.id);
+    }
 
     return (
         <div>
@@ -52,7 +58,7 @@ const BelbinResults = (props) =>{
                     </tbody>
                 </table>
             </div>
-
+            <Button variant="outlined" href="/belbin" disabled={!securityUtils.isLogged()} onClick={handleSaveResult}>Сохранить результаты</Button>
             
         </div>
     )

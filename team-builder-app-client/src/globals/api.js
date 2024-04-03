@@ -1,3 +1,4 @@
+import { use } from "echarts";
 
 const isDev = true //change to false before  build
 
@@ -34,6 +35,18 @@ class BelbinApi{
 
     getQuestionBlock(blockNumber){
         return fetch(this.contextUrl+"/questions/block/"+blockNumber, {
+            method:"GET"
+        });
+    }
+
+    postUserResult(userId, roleId){
+        return fetch(this.contextUrl+`/results/?userId=${userId}&roleId=${roleId}`, {
+            method:"POST"
+        });
+    }
+
+    getUserResult(userId){
+        return fetch(this.contextUrl+`/results/${userId}`, {
             method:"GET"
         });
     }

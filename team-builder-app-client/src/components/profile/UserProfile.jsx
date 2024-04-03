@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { securityUtils } from '../../globals/SecurityUtils';
 import UserForm from './UserForm';
+import BelbinResult from './BelbinResult';
 
 
 const UserProfile = () =>{
@@ -17,6 +18,9 @@ const UserProfile = () =>{
 
         <div>
             <UserForm />
+            <hr />
+            <BelbinResult />
+            <hr />
         </div>
     )
 }
