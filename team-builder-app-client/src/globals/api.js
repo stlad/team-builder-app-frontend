@@ -54,6 +54,16 @@ class AdminApi{
         });
     }
 
+    updateUserById(id, body){
+        return fetch(this.contextUrl+"/users/"+id,{
+            method:"PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:JSON.stringify(body)
+        })
+    }
+
 }
 
 class HardSkillsApi{

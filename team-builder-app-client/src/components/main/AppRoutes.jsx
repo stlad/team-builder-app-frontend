@@ -7,6 +7,7 @@ import HardSkillsPage from '../hardskills/HardSkillsPage';
 import MainPage from './MainPage';
 import LoginHeader from './LoginHeader';
 import HardSkillsFooter from '../hardskills/HardSkillsFooter';
+import UserProfile from '../profile/UserProfile';
 
 const AppRoutes  = (props) =>{
     
@@ -46,6 +47,14 @@ const AppRoutes  = (props) =>{
                         <HardSkillsFooter />
                     </div>
                 }/>
+            <Route path='/profile'
+                element={
+                    <div>
+                        <LoginHeader />
+                        <UserProfile />
+                    </div>
+                }/>
+            
         </Routes>
     </BrowserRouter>
 )

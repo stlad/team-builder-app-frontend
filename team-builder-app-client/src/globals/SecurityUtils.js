@@ -3,9 +3,9 @@ class SecurityUtils{
     mockLogin = ()=>{
         console.log("LOGGING")
         localStorage.setItem("user_id", 1);
-        localStorage.setItem("username", "testusername");
-        localStorage.setItem("firstname", "Никита");
-        localStorage.setItem("lastname", "Никитин");
+        localStorage.setItem("username", "Ivan");
+        localStorage.setItem("firstname", "Иван");
+        localStorage.setItem("lastname", "Иванов");
         window.location.reload();
     }
     

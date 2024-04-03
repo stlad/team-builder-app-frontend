@@ -11,7 +11,7 @@ const MainPage = () =>{
         <div>
             <p><Link to='/belbin' >Командные роли</Link></p>
             <p><Link to='/hardskills' >Профессиональные роли</Link></p>
-            
+            <p><Link to='/profile' >Профиль</Link></p>
         </div>
     )
 }
