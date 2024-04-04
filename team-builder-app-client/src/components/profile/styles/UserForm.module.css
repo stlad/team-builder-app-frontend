@@ -1,0 +1,19 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    gap:20px
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.user_form_main{
+    margin-right: 3em;
+    margin-left: 3em;
+    border: 1px solid grey;
+    border-radius: 2%;
+    padding: 3em 3em 3em 3em;
+    width: 25em;
+}

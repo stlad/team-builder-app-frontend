@@ -3,6 +3,7 @@ import { securityUtils } from '../../globals/SecurityUtils';
 import {adminApi} from '../../globals/api.js'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import classes from './styles/UserForm.module.css'
 
 const UserForm = () =>{
 
@@ -31,7 +32,7 @@ const UserForm = () =>{
 
     if(currentUser === null){
         return (
-            <div>
+            <div className={`${classes.col} ${classes.user_form_main}`}>
                 <p>Не удалось получить данные о пользователе</p>
             </div>
         )
@@ -39,14 +40,15 @@ const UserForm = () =>{
 
     return (
         <div>
-            <form>
-                <TextField id="outlined-required" label="Логин" disabled placeholder='Логин' value={currentUser.username} name='username' onChange={handleInputChange}/>
-                <TextField id="outlined-required" label="Имя"  placeholder='Имя' value={currentUser.firstname} name='firstname' onChange={handleInputChange}/>
-                <TextField id="outlined-required" label="Фамилия"  placeholder='Фамилия' value={currentUser.lastname} name='lastname' onChange={handleInputChange}/>
-                <TextField id="outlined-required" label="Отчество"  placeholder='Отчество' value={currentUser.middlename} name='middlename' onChange={handleInputChange}/>
-                <Button variant="outlined" onClick={handleSubmit}>Сохранить</Button>
-            </form>
-            
+            <div >
+                <form className={`${classes.col} ${classes.user_form_main}`}>
+                    <TextField id="outlined-required" label="Логин" disabled placeholder='Логин' value={currentUser.username} name='username' onChange={handleInputChange}/>
+                    <TextField id="outlined-required" label="Имя"  placeholder='Имя' value={currentUser.firstname} name='firstname' onChange={handleInputChange}/>
+                    <TextField id="outlined-required" label="Фамилия"  placeholder='Фамилия' value={currentUser.lastname} name='lastname' onChange={handleInputChange}/>
+                    <TextField id="outlined-required" label="Отчество"  placeholder='Отчество' value={currentUser.middlename} name='middlename' onChange={handleInputChange}/>
+                    <Button variant="outlined" onClick={handleSubmit}>Сохранить</Button>
+                </form>
+            </div>
         </div>
     )
 }

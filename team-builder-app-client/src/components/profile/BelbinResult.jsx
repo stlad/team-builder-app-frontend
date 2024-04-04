@@ -4,6 +4,7 @@ import { belbinApi } from "../../globals/api";
 import { securityUtils } from "../../globals/SecurityUtils";
 import { useNavigate, useParams,Link } from "react-router-dom";
 import Button from '@mui/material/Button';
+import classes from './styles/BelbinResult.module.css'
 
 const BelbinResult = ()=>{
     
@@ -25,17 +26,18 @@ const BelbinResult = ()=>{
     }
     if(result === null){
         return (
-            <div>
+            <div className={`${classes.belbin_result_main}`}>
                 <p>Не удается получить данные о прохождении Теста Белбина</p>
             </div>
         )
     }
     return (
-        <div>
-            <p> {result.role?.rusName}</p>
-            <p> {result.role?.description}</p>
+        <div className={`${classes.belbin_result_main}`}>
+            <div className={`${classes.col}`}>
+                <p> {result.role?.rusName}</p>
+                <p  className={`${classes.role_descr}`}> {result.role?.description}</p>
                 <Button variant="outlined" href="/belbin">Пройти тест Белбина заново</Button>
-
+            </div>
         </div>
     )
 }

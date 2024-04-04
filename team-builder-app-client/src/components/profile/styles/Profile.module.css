@@ -1,0 +1,14 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    gap:20px
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.main_profile{
+    margin: 3em 3em 3em 3em;
+}
