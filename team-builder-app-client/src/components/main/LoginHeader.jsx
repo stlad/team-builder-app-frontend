@@ -3,16 +3,18 @@ import { useNavigate, useParams,Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import classes from './styles/LoginHeader.module.css'
 import { securityUtils} from '../../globals/SecurityUtils';
+import TextField from '@mui/material/TextField';
 
 const LoginHeader = () =>{
 
     const [logFlag, setLogFlag] = useState(true);
+    const [logData, setLogData] = useState(null);
     useState(()=>{},[logFlag])
 
 
     const login= ()=>{
         console.log("LOGGING")
-        securityUtils.mockLogin();
+        securityUtils.login(logData.email, logData.password);
         setLogFlag(!logFlag);
     }
 
@@ -22,11 +24,25 @@ const LoginHeader = () =>{
         setLogFlag(!logFlag);
     }
 
+    const  handleInputChange = (evt) => {
+        const name = evt.target.name;
+        const value =
+          evt.target.type === "checkbox" ? !evt.target.checked : evt.target.value;
+        setLogData({
+          ...logData,
+          [name]: value ==="" ? null : value
+        })
+      }
+
     if(!securityUtils.isLogged()){
         return (
             <div className={`${classes.row}`}>
                 <div className={`${classes.loginBtn}`}>
-                    <Button variant="outlined" onClick={login}>Вход</Button>
+                    <form className={`${classes.col}`}>
+                        <TextField id="outlined-basic" label="email" name='email' variant="outlined" onChange={handleInputChange}/>
+                        <TextField id="outlined-basic" label="password" name='password'variant="outlined" type="password" onChange={handleInputChange}/>
+                        <Button variant="outlined" onClick={login}>Вход</Button>
+                    </form>
                 </div>
             </div>
         )

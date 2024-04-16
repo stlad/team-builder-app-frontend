@@ -1,5 +1,12 @@
 .row{
     display: flex;
     flex-direction: row;
-    gap:20px
+    gap:5px
+}
+
+.col{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap:5px
 }

@@ -77,6 +77,26 @@ class AdminApi{
         })
     }
 
+    register(body){
+        return fetch(this.contextUrl+"/auth/register", {
+            method:"POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:JSON.stringify(body)
+        });
+    }
+
+    login(body){
+        return fetch(this.contextUrl+"/auth/login", {
+            method:"POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:JSON.stringify(body)
+        });
+    }
+
 }
 
 class HardSkillsApi{
