@@ -18,11 +18,18 @@ class SecurityUtils{
         }
         adminApi.login(auth).then(data => data.json())
             .then(user=>{
+                console.log(user);
+                if(user === null|| user===undefined || user.username===undefined){
+                    this.logout();
+                    return;
+                }
                 localStorage.setItem("user_id", user.id);
                 localStorage.setItem("username", user.username);
                 localStorage.setItem("firstname", user.firstname);
                 localStorage.setItem("lastname", user.lastname);
                 localStorage.setItem("middlename", user.middlename);
+                
+
 
                 window.location.reload();
             })

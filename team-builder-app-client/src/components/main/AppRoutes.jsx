@@ -8,6 +8,7 @@ import MainPage from './MainPage';
 import LoginHeader from './LoginHeader';
 import HardSkillsFooter from '../hardskills/HardSkillsFooter';
 import UserProfile from '../profile/UserProfile';
+import UserRegForm from '../registration/UserRegForm';
 
 const AppRoutes  = (props) =>{
     
@@ -55,6 +56,13 @@ const AppRoutes  = (props) =>{
                     </div>
                 }/>
             
+            <Route path='/register'
+                element={
+                    <div>
+                        <UserRegForm />
+                        
+                    </div>
+                }/>
         </Routes>
     </BrowserRouter>
 )

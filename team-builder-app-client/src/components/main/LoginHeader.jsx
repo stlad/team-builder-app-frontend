@@ -10,10 +10,13 @@ const LoginHeader = () =>{
     const [logFlag, setLogFlag] = useState(true);
     const [logData, setLogData] = useState(null);
     useState(()=>{},[logFlag])
-
+    const navigate = useNavigate();
 
     const login= ()=>{
         console.log("LOGGING")
+        
+        if(logData === null || logData.email===null || logData.email===undefined || logData.email ==="")
+            return
         securityUtils.login(logData.email, logData.password);
         setLogFlag(!logFlag);
     }
@@ -42,7 +45,9 @@ const LoginHeader = () =>{
                         <TextField id="outlined-basic" label="email" name='email' variant="outlined" onChange={handleInputChange}/>
                         <TextField id="outlined-basic" label="password" name='password'variant="outlined" type="password" onChange={handleInputChange}/>
                         <Button variant="outlined" onClick={login}>Вход</Button>
+                        
                     </form>
+                        <Button variant="outlined" onClick={()=>navigate("/register")}>Регистрация</Button>
                 </div>
             </div>
         )
