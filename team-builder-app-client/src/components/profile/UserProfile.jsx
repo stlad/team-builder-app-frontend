@@ -4,6 +4,7 @@ import UserForm from './UserForm';
 import BelbinResult from './BelbinResult';
 import HardSkillsResult from './HardskillsResult';
 import classes from './styles/Profile.module.css'
+import HardSkillsPage from '../hardskills/HardSkillsPage';
 
 const UserProfile = () =>{
     useEffect(()=>{document.title='TBA Профиль'},[])
@@ -22,7 +23,8 @@ const UserProfile = () =>{
                 <div className={`${classes.row} ${classes.main_profile}`}>
                     <UserForm />
                     <BelbinResult />
-                    <HardSkillsResult />
+                    {/* <HardSkillsResult /> */}
+                    <HardSkillsPage />
                 </div>
             <hr />
         </div>
