@@ -96,7 +96,11 @@ class AdminApi{
             body:JSON.stringify(body)
         });
     }
-
+    getAllUsers(id){
+        return fetch(this.contextUrl+"/users/all", {
+            method:"GET"
+        });
+    }
 }
 
 class HardSkillsApi{

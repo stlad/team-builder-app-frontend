@@ -60,7 +60,7 @@ const LoginHeader = () =>{
                 <Button variant="outlined" onClick={logout}>Выход</Button>
             </div>
             <div>
-                {localStorage.getItem("username")} {localStorage.getItem("firstname")}
+                {localStorage.getItem("lastname")} {localStorage.getItem("firstname")} {localStorage.getItem("academicGroup")}
             </div>
         </div>
     )

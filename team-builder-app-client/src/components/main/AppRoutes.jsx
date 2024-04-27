@@ -9,6 +9,8 @@ import LoginHeader from './LoginHeader';
 import HardSkillsFooter from '../hardskills/HardSkillsFooter';
 import UserProfile from '../profile/UserProfile';
 import UserRegForm from '../registration/UserRegForm';
+import AllStudentsPage from '../students/all_students_page/AllStudentsPage';
+import MainFooter from './MainFooter';
 
 const AppRoutes  = (props) =>{
     
@@ -61,6 +63,17 @@ const AppRoutes  = (props) =>{
                     <div>
                         <UserRegForm />
                         
+                    </div>
+                }/>
+
+
+                
+            <Route path='/students/all'
+                element={
+                    <div>
+                        <LoginHeader />
+                        <AllStudentsPage />
+                        <MainFooter />
                     </div>
                 }/>
         </Routes>

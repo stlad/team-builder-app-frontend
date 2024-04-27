@@ -28,6 +28,7 @@ class SecurityUtils{
                 localStorage.setItem("firstname", user.firstname);
                 localStorage.setItem("lastname", user.lastname);
                 localStorage.setItem("middlename", user.middlename);
+                localStorage.setItem("academicGroup", user.academicGroup);
                 
 
 

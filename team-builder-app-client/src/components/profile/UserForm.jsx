@@ -23,6 +23,7 @@ const UserForm = () =>{
           ...currentUser,
           [name]: value ==="" ? null : value
         })
+        console.log(currentUser)
       }
     
     const handleSubmit = ()=>{
@@ -46,6 +47,7 @@ const UserForm = () =>{
                     <TextField id="outlined-required" label="Имя"  placeholder='Имя' value={currentUser.firstname} name='firstname' onChange={handleInputChange}/>
                     <TextField id="outlined-required" label="Фамилия"  placeholder='Фамилия' value={currentUser.lastname} name='lastname' onChange={handleInputChange}/>
                     <TextField id="outlined-required" label="Отчество"  placeholder='Отчество' value={currentUser.middlename} name='middlename' onChange={handleInputChange}/>
+                    <TextField id="outlined-required" label="Группа"  placeholder='Группа' value={currentUser.academicGroup} name='academicGroup' onChange={handleInputChange}/>
                     <Button variant="outlined" onClick={handleSubmit}>Сохранить</Button>
                 </form>
             </div>
