@@ -134,8 +134,25 @@ class HardSkillsApi{
         }
 }
 
+class TeambuilderApi{
+    constructor(){
+        this.host =document.location.protocol + "//" +document.location.hostname + (isDev ? ":8093" : ""); 
+        this.contextPath = '/api/teambuilder';
+        this.contextUrl=this.host+this.contextPath;
+        console.log("Hardskills Server address: "+this.host);
+    }
+    
+    getAllUsersWithRoles(){
+        return fetch(this.contextUrl+"/teams/users/all", {
+            method:"GET"
+        });
+    }
+
+}
+
 const belbinApi = new BelbinApi();
 const adminApi = new AdminApi();
 const hardskillsApi = new HardSkillsApi();
+const teambuilderApi = new TeambuilderApi()
 
-export {belbinApi, adminApi,hardskillsApi};
+export {belbinApi, adminApi,hardskillsApi,teambuilderApi};

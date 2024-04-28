@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { adminApi, hardskillsApi } from "../../../globals/api";
+import { adminApi, hardskillsApi, teambuilderApi } from "../../../globals/api";
 
 
 
@@ -7,7 +7,7 @@ const AllStudentsPage = ()=>{
     const [studs, setStuds] = useState(null)
 
     useEffect(()=>{
-        adminApi.getAllUsers().then(data =>  data.json()).then(data=> setStuds(data));
+        teambuilderApi.getAllUsersWithRoles().then(data =>  data.json()).then(data=> setStuds(data));
     }, [])
 
     if(studs === null || studs === undefined){
@@ -41,9 +41,9 @@ const AllStudentsPage = ()=>{
                             <td ><p>{student.firstname}</p></td>
                             <td ><p>{student.middlename}</p></td>
                             <td ><p>{student.academicGroup}</p></td>
-                            <td ><p>-</p></td>
-                            <td ><p>-</p></td>
-                            <td ><p>-</p></td>
+                            <td ><p>{student.profRole?.rusName}</p></td>
+                            <td ><p>{student.teamRole?.rusName}</p></td>
+                            <td ><p>{student.teamId}</p></td>
                         </tr>)}
                     </tbody>
             </table>
