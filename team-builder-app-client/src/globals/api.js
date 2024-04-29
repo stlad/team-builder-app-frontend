@@ -148,6 +148,29 @@ class TeambuilderApi{
         });
     }
 
+    getUsersTeam(id){
+        return fetch(this.contextUrl+"/teams/users/"+id, {
+            method:"GET"
+        });
+    }
+
+    getTeamById(id){
+        return fetch(this.contextUrl+"/teams/"+id+"/full", {
+            method:"GET"
+        });
+    }
+
+    getAllTeamsIds(id){
+        return fetch(this.contextUrl+"/teams/ids", {
+            method:"GET"
+        });
+    }
+
+    buildTeams(id){
+        return fetch(this.contextUrl+"/tb/start", {
+            method:"GET"
+        });
+    }
 }
 
 const belbinApi = new BelbinApi();

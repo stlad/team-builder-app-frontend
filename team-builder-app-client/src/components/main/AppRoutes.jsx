@@ -11,6 +11,8 @@ import UserProfile from '../profile/UserProfile';
 import UserRegForm from '../registration/UserRegForm';
 import AllStudentsPage from '../students/all_students_page/AllStudentsPage';
 import MainFooter from './MainFooter';
+import TeamCard from '../students/teams/TeamCard';
+import TeamsPage from '../students/teams/TeamsPage';
 
 const AppRoutes  = (props) =>{
     
@@ -76,6 +78,23 @@ const AppRoutes  = (props) =>{
                         <MainFooter />
                     </div>
                 }/>
+
+            <Route path='/teams/me'
+                    element={
+                        <div>
+                            <LoginHeader />
+                            <TeamCard teamId={null}/>
+                            <MainFooter />
+                        </div>
+                    }/>
+            <Route path='/teams'
+                    element={
+                        <div>
+                            <LoginHeader />
+                            <TeamsPage />
+                            <MainFooter />
+                        </div>
+                    }/>                
         </Routes>
     </BrowserRouter>
 )

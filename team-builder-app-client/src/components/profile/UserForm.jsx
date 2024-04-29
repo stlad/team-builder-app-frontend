@@ -44,6 +44,7 @@ const UserForm = () =>{
             <div >
                 <form className={`${classes.col} ${classes.user_form_main}`}>
                     <TextField id="outlined-required" label="Логин" disabled placeholder='Логин' value={currentUser.username} name='username' onChange={handleInputChange}/>
+                    <TextField id="outlined-required" label="Почта"  placeholder='Почта' value={currentUser.email} name='email' onChange={handleInputChange}/>
                     <TextField id="outlined-required" label="Имя"  placeholder='Имя' value={currentUser.firstname} name='firstname' onChange={handleInputChange}/>
                     <TextField id="outlined-required" label="Фамилия"  placeholder='Фамилия' value={currentUser.lastname} name='lastname' onChange={handleInputChange}/>
                     <TextField id="outlined-required" label="Отчество"  placeholder='Отчество' value={currentUser.middlename} name='middlename' onChange={handleInputChange}/>
