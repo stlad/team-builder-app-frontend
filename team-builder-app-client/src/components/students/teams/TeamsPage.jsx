@@ -26,11 +26,10 @@ const TeamsPage = ()=>{
         <div>
             <Button variant="outlined" onClick={handleBuildTeams}>Сформировать</Button>
             
-            <div style={{textAlign:"center"}}>
+            <div style={{marginLeft:"auto"}}>
                 {teamIds?.map((id, index)=>{return(
                     <div key={id}>
                         <TeamCard teamId={id} />
-                        <hr></hr>
                     </div>
                 )})}
             </div>

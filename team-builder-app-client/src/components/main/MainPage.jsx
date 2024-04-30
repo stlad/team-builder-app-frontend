@@ -13,12 +13,18 @@ const MainPage = () =>{
     
     return (
         <div className={`${classes.col} ${classes.menu} `}>
-            <Button variant="outlined" onClick={()=>navigate("/belbin")} >Командные роли</Button>
-            <Button variant="outlined" onClick={()=>navigate("/hardskills")}  disabled ={!securityUtils.isLogged()}>Профессиональные роли</Button>
+            <div className={`${classes.row}`}>
+                <Button variant="outlined" onClick={()=>navigate("/belbin")} >Командные роли</Button>
+                <Button variant="outlined" onClick={()=>navigate("/hardskills")}  disabled ={!securityUtils.isLogged()}>Профессиональные роли</Button>
+            </div>
 
+            <hr />
+            
             <Button variant="outlined" onClick={()=>navigate("/students/all")}  disabled ={!securityUtils.isLogged()}>Студенты</Button>
             <Button variant="outlined" onClick={()=>navigate("/teams")} disabled ={!securityUtils.isLogged()}>Команды</Button>
+            <Button variant="outlined" onClick={()=>navigate("/projects")} disabled ={!securityUtils.isLogged()}>Проекты</Button>
             <hr />
+            
             <Button variant="outlined" onClick={()=>navigate("/profile")} disabled ={!securityUtils.isLogged()}>Профиль</Button>
             <Button variant="outlined" onClick={()=>navigate("/teams/me")} disabled ={!securityUtils.isLogged()}>Моя команда</Button>
             

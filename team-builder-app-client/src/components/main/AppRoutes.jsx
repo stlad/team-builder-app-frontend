@@ -13,6 +13,7 @@ import AllStudentsPage from '../students/all_students_page/AllStudentsPage';
 import MainFooter from './MainFooter';
 import TeamCard from '../students/teams/TeamCard';
 import TeamsPage from '../students/teams/TeamsPage';
+import ProjectsPage from '../projects/ProjectsPage';
 
 const AppRoutes  = (props) =>{
     
@@ -94,7 +95,17 @@ const AppRoutes  = (props) =>{
                             <TeamsPage />
                             <MainFooter />
                         </div>
-                    }/>                
+                    }/>    
+
+
+             <Route path='/projects'
+                    element={
+                        <div>
+                            <LoginHeader />
+                            <ProjectsPage />
+                            <MainFooter />
+                        </div>
+                    }/>                   
         </Routes>
     </BrowserRouter>
 )
