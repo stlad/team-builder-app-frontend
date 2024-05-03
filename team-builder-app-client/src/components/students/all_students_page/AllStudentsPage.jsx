@@ -21,7 +21,7 @@ const AllStudentsPage = ()=>{
 
     return (
         <div>
-            <table>
+            <table style={{marginRight:"auto", marginLeft:"auto", width:"100em"}}>
                 <thead>
                     <tr>
                         <th>Фамилия</th>
