@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: 50px;
+    max-width: 1440px;
+    gap: 100px;
+    align-items: center;
+    margin: 20px auto;
+    font-family: Inter;
+    font-size: 14px;
+}
+
+
+.menu {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 12px;
+    color: black;
+    /* opacity: 1;  */
+}
+
+.logo {
+    height: 80%;
+}

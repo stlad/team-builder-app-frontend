@@ -1,12 +1,38 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    gap:5px
+.wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    column-gap: 15px;
+
+    height: 50px;
 }
 
-.col{
-    margin-top: 1em;
-    display: flex;
-    flex-direction: column;
-    gap:5px
+
+
+
+.name {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: end;
+}
+
+.group {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.out {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: end;
+    cursor: pointer;
+}
+
+/* .out {
+    height: 100%;
+} */
+
+.out img {
+    /* width: 100%; */
+    height: 50px;
 }

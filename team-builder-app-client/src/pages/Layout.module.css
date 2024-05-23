@@ -1,0 +1,22 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin: auto;
+
+
+
+
+}
+
+.outlet {
+    overflow-y: auto;
+    width: 100%;
+    margin: auto;
+
+}
+
+.header {
+    margin: auto;
+}
