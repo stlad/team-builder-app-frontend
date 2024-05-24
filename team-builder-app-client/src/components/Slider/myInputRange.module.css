@@ -1,0 +1,69 @@
+.input {
+
+    width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    box-shadow: 0.3em 0.3em 0.4em #c1c2c5 inset, -0.3em -0.3em 0.4em #fff inset;
+    border-radius: 0.75em;
+    display: block;
+    appearance: none;
+    height: 1.5em;
+
+    cursor: pointer;
+
+}
+
+
+
+.myInput {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+}
+
+
+.tickets {
+    display: flex;
+    font: 1em/1.5 'Roboto', sans-serif;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    position: absolute;
+    top: 0.04em;
+    left: 0.75em;
+    width: calc(100% - 1.5em);
+    height: 100%;
+}
+
+.ticket {
+
+    color: #454954;
+    font-size: 0.5em;
+    text-align: center;
+    width: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+}
+
+.shoiceValue {
+    display: flex;
+    height: 3em;
+    width: 3em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font: bold 0.5em/1.5 'Roboto', sans-serif;
+    color: #FFF;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-color: #337AB7;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: -0.3em -0.3em 0.5em #0d518c inset, 0 -0.2em 0.2em 0 rgba(0, 0, 0, 0.2), 0.3em 0.5em 0.8em rgba(0, 0, 0, 0.3);
+
+
+}

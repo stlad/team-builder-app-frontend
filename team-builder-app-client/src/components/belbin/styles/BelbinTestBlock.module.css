@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 20px 20px;
+    width: 80%;
+
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: ; */
+    gap: 400px
+}

@@ -25,7 +25,7 @@ const Header = () => {
                             <NavLink to="/teams">Команды</NavLink>
                             <NavLink to="/projects">Проекты</NavLink>
                             <NavLink to="/profile">Профиль</NavLink>
-                            <NavLink to="/teams/me">Моя команда</NavLink>
+                            <NavLink to="/teamsme">Моя команда</NavLink>
                         </>
                         :
                         <></>

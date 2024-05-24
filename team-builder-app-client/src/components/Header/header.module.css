@@ -2,13 +2,15 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    height: 50px;
+    height: 90px;
     max-width: 1440px;
     gap: 100px;
     align-items: center;
-    margin: 20px auto;
+    margin: 0px auto;
     font-family: Inter;
     font-size: 14px;
+    padding: 10px 40px;
+    border-bottom: 2px solid rgb(182, 182, 182);
 }
 
 

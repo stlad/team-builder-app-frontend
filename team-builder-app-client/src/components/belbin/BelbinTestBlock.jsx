@@ -1,90 +1,103 @@
 import React, { useState, useEffect } from 'react';
-import {belbinApi} from '../../globals/api';
+import { belbinApi } from '../../globals/api';
 import QuestionCard from './questions/QuestionCard';
 import Slider from '@mui/material/Slider';
+import MyInputRange from '../Slider/myInputRange';
+import classes from './styles/BelbinTestBlock.module.css'
 
-const BelbinTestBlock = (props)=>{
+
+
+const MAX_POINTS = 10
+
+
+const BelbinTestBlock = (props) => {
 
     const [currentBlank, setCurrentBlank] = useState(null)
     const [questions, setQuestions] = useState(null)
     const [blockInfo, setBlockInfo] = useState(null)
-    const [maxPoints, setMaxPoint] = useState(10)
+    // const [maxPoints, setMaxPoint] = useState(10)
     const [pointsLeft, setPointsLeft] = useState(10)
 
-    useEffect(()=>{
-        belbinApi.getQuestionBlank().then(r=>r.json())
-        .then(blank=> setCurrentBlank(blank.blank));
+    useEffect(() => {
+        belbinApi.getQuestionBlank().then(r => r.json())
+            .then(blank => setCurrentBlank(blank.blank));
 
-        if(props.page === 8 ) return
-        belbinApi.getQuestionBlock(props.page).then(resp=>resp.json())
+        if (props.page === 8) return
+        belbinApi.getQuestionBlock(props.page).then(resp => resp.json())
             .then(resp => {
                 setBlockInfo(resp.blockQuestion);
                 setQuestions(resp.questions)
             })
     }, [props.page])
 
-    useEffect(()=>{
-        let sum=0;
-        if(currentBlank === null) return;
-        for(let key of Object.keys(currentBlank)){
+    useEffect(() => {
+        let sum = 0;
+        if (currentBlank === null) return;
+        for (let key of Object.keys(currentBlank)) {
+            // console.log('key', key, '---', currentBlank[key])
             sum += currentBlank[key];
         }
-        setPointsLeft(maxPoints - sum)
+        console.log('sum', sum)
+        setPointsLeft(MAX_POINTS - sum)
 
-    },[currentBlank])
+    }, [currentBlank])
 
-    useEffect(()=>{
-        props.allowNext(pointsLeft ===0)
+    useEffect(() => {
+        props.allowNext(pointsLeft === 0)
     }, [pointsLeft])
 
 
-    useEffect(()=>{
+    useEffect(() => {
         props.getBlank(currentBlank)
     }, [props.commitFlag])
 
 
-    const updateBlank = (key, valueToAdd) =>{
-        //console.log(key, valueToAdd)
+    const updateBlank = (key, valueToAdd) => {
+
         setCurrentBlank({
             ...currentBlank,
-            [key] : valueToAdd
+            [key]: valueToAdd
         })
     }
 
-    const handleSliderChange = (event, newValue, activeThumb) =>{
-        let val = Number(event.target.value);
-        updateBlank(event.target.name, newValue)
+    const handleSliderChange = (event, newValue) => {
+
+        updateBlank(event, newValue)
+
+
     }
 
-    const marks = [];
-    [0,1,2,3,4,5,6,7,8,9,10].map(num=>marks.push({value:num, label:num}))
- 
+
     return (
-        <div>
-            <div>
-                <p>{blockInfo?.blockContent}</p>
-                <p>Осталось распределить: {pointsLeft} очков</p>
-            </div>
+        <div className={classes.wrapper}>
 
-            <div>
-                {questions?.map(qst =>
-                    <div key={qst?.id}>
-                        <QuestionCard getBlank={()=>currentBlank} 
-                            addToBlank={(k,v) => updateBlank(k,v)} 
-                            question={qst}/>
+            <h1>Тест Белбина!!</h1>
+            <h2>{blockInfo?.blockContent}</h2>
+            <div className={classes.info}>
+                <p style={{
+                    color: `${(pointsLeft > 0) ? 'red' : 'green'}`
+                }}
 
-                        <div style={{width: "30em", margin: "auto" }}>
-                            <Slider aria-label="points" defaultValue={0} valueLabelDisplay="auto"
-                                step={1} marks={marks} min={0} max={10}
-                                color="secondary" 
-                                onChange={handleSliderChange} name={qst.attachedRole.engName}/>
-                        </div>
-                    </div>
-                )}
-            </div>
-            <div>
+
+                >Осталось распределить: {pointsLeft} баллов</p>
                 <p>Страница  {blockInfo?.number} / 7</p>
             </div>
+
+
+
+
+            {questions?.map(qst =>
+                <div key={qst?.id}>
+                    <QuestionCard getBlank={() => currentBlank}
+                        addToBlank={(k, v) => updateBlank(k, v)}
+                        question={qst} />
+
+                    <MyInputRange setValue={handleSliderChange} name={qst.attachedRole.engName} sumScore={MAX_POINTS - pointsLeft} />
+
+                </div>
+            )}
+
+
         </div>
     )
 }
