@@ -1,20 +1,22 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    gap:5px
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px
 }
 
-.col{
-    margin-top: 1em;
-    display: flex;
-    flex-direction: column;
-    gap:5px
+.col {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
 }
 
-.menu{
-    
+.menu {
+
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-width: 30em
+  width: 30em;
+
 }

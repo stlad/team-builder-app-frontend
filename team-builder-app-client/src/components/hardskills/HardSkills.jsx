@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {hardskillsApi} from '../../globals/api.js'
-import classes from './styles/HardSkilllsPage.module.css'
+import { hardskillsApi } from '../../globals/api.js'
+import classes from './HardSkillls.module.css'
 import { securityUtils } from '../../globals/SecurityUtils.js';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,24 +9,25 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
+import { useNavigate, useLocation, useParams, NavLink } from "react-router-dom";
 
-const HardSkillsPage = () =>{
-    useEffect(()=>{document.title='Проф. Компетенции'},[])
+const HardSkills = () => {
+    useEffect(() => { document.title = 'Проф. Компетенции' }, [])
 
     const [catalog, setCatalog] = useState([])
     const [selectedRole, setSelectedRole] = useState(-1)
 
-    useEffect(()=>{
-        const getUsersRoles = () =>{
-            if(!securityUtils.isLogged()) return;
+    useEffect(() => {
+        const getUsersRoles = () => {
+            if (!securityUtils.isLogged()) return;
             hardskillsApi.getUserRole(securityUtils.getCurrentUserId()).then(resp => resp.json())
                 .then(resp => {
                     console.log(resp)
-                    setSelectedRole(resp.hardRole===null? -1: resp.hardRole.id);
+                    setSelectedRole(resp.hardRole === null ? -1 : resp.hardRole.id);
                 });
         }
-    
-        const getRolesCatalog = () =>{
+
+        const getRolesCatalog = () => {
             hardskillsApi.getAllRoles().then(resp => resp.json())
                 .then(resp => {
                     setCatalog(resp);
@@ -35,27 +36,27 @@ const HardSkillsPage = () =>{
 
         getRolesCatalog();
         getUsersRoles();
-    },[])
+    }, [])
 
 
-    const handleSaveRoles = ()=>{
+    const handleSaveRoles = () => {
         const roleToSave = {
-            id:null,
+            id: null,
             userId: securityUtils.getCurrentUserId(),
             hardRoleId: selectedRole
         }
-        hardskillsApi.postResult(roleToSave).then(resp=> 
+        hardskillsApi.postResult(roleToSave).then(resp =>
             window.location.reload());
     }
 
-    const handleChange = (event)=>{
+    const handleChange = (event) => {
         setSelectedRole(event.target.value)
     }
 
-    const renderList = () =>{
-        if(catalog===null || catalog.length===0)
+    const renderList = () => {
+        if (catalog === null || catalog.length === 0)
             return (<div>Не загружено</div>)
-        
+
         return (
             <div className={`${classes.center} ${classes.col}`}>
                 <Box >
@@ -66,33 +67,39 @@ const HardSkillsPage = () =>{
                         value={selectedRole}
                         onChange={handleChange}
                         renderValue={(selected) => {
-                            if(selected === -1) return "Нет"
+                            if (selected === -1) return "Нет"
                             let roleWithQuota = catalog.find((el) => el.role.id === selected)
-                        return `${roleWithQuota.role.rusName} ${roleWithQuota.currentCount}/${roleWithQuota.quota}`
-                    }}>
-                        <MenuItem  value={-1}>Нет</MenuItem>
+                            return `${roleWithQuota.role.rusName} ${roleWithQuota.currentCount}/${roleWithQuota.quota}`
+                        }}>
+                        <MenuItem value={-1}>Нет</MenuItem>
 
                         {catalog.map(role => {
-                            return (<MenuItem 
-                                key={role.role.id} 
-                                value={role.role.id} 
+                            return (<MenuItem
+                                key={role.role.id}
+                                value={role.role.id}
                                 disabled={(role.quota - role.currentCount) <= 0}>
                                 {role.role.rusName} ({role.currentCount}/{role.quota})
-                            </MenuItem> )
+                            </MenuItem>)
                         })}
                     </Select>
                 </Box>
-                <Button variant="outlined" disabled={!securityUtils.isLogged()} onClick={handleSaveRoles}>Сохранить</Button>
+                <button variant="outlined" disabled={!securityUtils.isLogged()} onClick={handleSaveRoles}>Сохранить</button>
             </div>
         )
     }
 
     return (
-        <div>
+        <div className={classes.wrapper}>
             {renderList()}
+
+            {/* 
+            <p><NavLink to='/' >На главную</NavLink></p>
+            <p><NavLink to='/' >Назад</NavLink></p> */}
+            <p><NavLink to='/belbin' >Тест Белбина</NavLink></p>
+
         </div>
     )
 }
 
 
-export default HardSkillsPage;
+export default HardSkills;

@@ -1,0 +1,6 @@
+.wrapper {
+    max-width: 1440px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}

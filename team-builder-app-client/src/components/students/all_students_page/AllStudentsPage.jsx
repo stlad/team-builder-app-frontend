@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import { adminApi, hardskillsApi, teambuilderApi } from "../../../globals/api";
+import classes from './AllStudentsPage.module.css'
 
 
-
-const AllStudentsPage = ()=>{
+const AllStudentsPage = () => {
     const [studs, setStuds] = useState(null)
 
-    useEffect(()=>{
-        teambuilderApi.getAllUsersWithRoles().then(data =>  data.json()).then(data=> setStuds(data));
+    useEffect(() => {
+        teambuilderApi.getAllUsersWithRoles().then(data => data.json()).then(data => setStuds(data));
     }, [])
 
-    if(studs === null || studs === undefined){
-        return(
-            <div>
-                <p>Не удалось получить данные о студентах</p>
+    if (studs === null || studs === undefined) {
+        return (
+            <div style={{ textAlign: 'center' }}>
+                Не удалось получить данные о студентах
             </div>
         )
     }
 
 
     return (
-        <div>
-            <table style={{marginRight:"auto", marginLeft:"auto", width:"100em"}}>
+        <div className={classes.wrapper}>
+            <table style={{ marginRight: "auto", marginLeft: "auto", width: "90%" }}>
                 <thead>
                     <tr>
                         <th>Фамилия</th>
@@ -32,10 +32,10 @@ const AllStudentsPage = ()=>{
                         <th>Роль по Белбину</th>
                         <th>Команда</th>
                     </tr>
-                    </thead>
+                </thead>
 
-                    <tbody>
-                        {studs?.map((student, index) =>
+                <tbody>
+                    {studs?.map((student, index) =>
                         <tr key={student?.id}>
                             <td ><p>{student.lastname}</p></td>
                             <td ><p>{student.firstname}</p></td>
@@ -45,7 +45,7 @@ const AllStudentsPage = ()=>{
                             <td ><p>{student.teamRole?.rusName}</p></td>
                             <td ><p>{student.teamId}</p></td>
                         </tr>)}
-                    </tbody>
+                </tbody>
             </table>
         </div>
     )

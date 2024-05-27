@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { securityUtils } from "../../globals/SecurityUtils";
-import { useNavigate, useParams,Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { adminApi, hardskillsApi } from "../../globals/api";
 import classes from './styles/HardSkillsResult.module.css'
 
-const HardSkillsResult = ()=>{
+const HardSkillsResult = () => {
 
     const [role, setRole] = useState(null)
-    useEffect(()=>{
-        hardskillsApi.getUserRole(securityUtils.getCurrentUserId()).then(resp=>resp.json())
-        .then(data => setRole(data.hardRole))
-    },[])
+    useEffect(() => {
+        hardskillsApi.getUserRole(securityUtils.getCurrentUserId()).then(resp => resp.json())
+            .then(data => setRole(data.hardRole))
+    }, [])
 
-    if(role===null){
+    if (role === null) {
         return (
             <div className={`${classes.hard_skills_main}`}>
                 <p> Не удалось получить информацию о проф. роли</p>
@@ -29,3 +29,6 @@ const HardSkillsResult = ()=>{
 }
 
 export default HardSkillsResult;
+
+
+

@@ -13,21 +13,26 @@ const MainPage = () => {
 
     return (
         <div className={`${classes.col} ${classes.menu} `}>
-            <div className={`${classes.row}`}>
+            <div className={classes.row}>
+                <button onClick={() => navigate("/belbin")} >Командные роли</button>
+                <button onClick={() => navigate("/hardskills")} disabled={!securityUtils.isLogged()}>Профессиональные роли</button>
+            </div>
+            {/* <div className={`${classes.row}`}>
                 <Button variant="outlined" onClick={() => navigate("/belbin")} >Командные роли</Button>
                 <Button variant="outlined" onClick={() => navigate("/hardskills")} disabled={!securityUtils.isLogged()}>Профессиональные роли</Button>
+            </div> */}
+            <hr />
+            <div className={classes.col}>
+                <button onClick={() => navigate("/students/all")} disabled={!securityUtils.isLogged()}>Студенты</button>
+                <button onClick={() => navigate("/teams")} disabled={!securityUtils.isLogged()}>Команды</button>
+                <button onClick={() => navigate("/projects")} disabled={!securityUtils.isLogged()}>Проекты</button>
+
             </div>
-
             <hr />
-
-            <Button variant="outlined" onClick={() => navigate("/students/all")} disabled={!securityUtils.isLogged()}>Студенты</Button>
-            <Button variant="outlined" onClick={() => navigate("/teams")} disabled={!securityUtils.isLogged()}>Команды</Button>
-            <Button variant="outlined" onClick={() => navigate("/projects")} disabled={!securityUtils.isLogged()}>Проекты</Button>
-            <hr />
-
-            <Button variant="outlined" onClick={() => navigate("/profile")} disabled={!securityUtils.isLogged()}>Профиль</Button>
-            <Button variant="outlined" onClick={() => navigate("/teamsme")} disabled={!securityUtils.isLogged()}>Моя команда</Button>
-
+            <div className={classes.col}>
+                <button onClick={() => navigate("/profile")} disabled={!securityUtils.isLogged()}>Профиль</button>
+                <button onClick={() => navigate("/teamsme")} disabled={!securityUtils.isLogged()}>Моя команда</button>
+            </div>
         </div>
     )
 }

@@ -1,18 +1,17 @@
-import HardSkillsPage from "../components/hardskills/HardSkillsPage"
-import HardSkillsFooter from "../components/hardskills/HardSkillsFooter"
+import HardSkills from "../components/hardskills/HardSkills"
+//import HardSkillsFooter from "../components/hardskills/HardSkillsFooter"
 
 
-const HardskillPage = () => {
+const HardSkillPage = () => {
 
     return (
-        <>
 
-            <HardSkillsPage />
-            <HardSkillsFooter />
-        </>
+
+        <HardSkills />
+
 
     )
 
 }
 
-export default HardskillPage
+export default HardSkillPage

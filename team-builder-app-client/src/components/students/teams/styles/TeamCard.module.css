@@ -1,13 +1,40 @@
-.membersField{
-    text-align: left;
+.membersField {
+    font-size: 14px;
+    line-height: 28px;
+    width: 100%;
+
 }
 
-.card{
-    border:1px solid black;
-    border-radius: 1em;
-    width:50em;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    margin-left: auto;
-    margin-right: auto;
+.membersField td {
+    padding-left: 15px;
+}
+
+
+.card {
+    border: 1px solid #0000ff;
+    border-radius: 10px;
+    width: 50em;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 25px;
+
+}
+
+.up {
+    height: 2em;
+    font-size: 24px;
+    line-height: 48px;
+    background-color: rgba(0, 150, 255, 0.3);
+    width: 100%;
+    text-align: center;
+}
+
+.down {
+
+    font-size: 18px;
+    line-height: 48px;
+    background-color: rgba(0, 150, 255, 0.3);
+    width: 100%;
+    text-align: left;
+    padding-left: 25px;
 }
