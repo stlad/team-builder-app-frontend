@@ -21,17 +21,17 @@ const UserProfile = () => {
     }
     return (
 
-        <div className={`${classes.main_profile}`}>
-            <hr />
-            <div className={`${classes.row} ${classes.main_profile}`}>
-                <UserForm />
-                <BelbinResult />
-                {/* <HardSkillsResult /> */}
-                <HardSkillsPage />
+        <div className={classes.wrapper}>
 
-            </div>
+
+            <BelbinResult />
             <hr />
-            <Button variant="outlined" onClick={() => navigate("/")}>На главную</Button>
+            <div className={classes.forms}>
+                <UserForm />
+                <HardSkillsPage />
+            </div>
+
+
         </div>
     )
 }

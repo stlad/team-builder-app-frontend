@@ -1,14 +1,17 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    gap:20px
-}
-.col{
-    display: flex;
-    flex-direction: column;
-    gap:20px
+.wrapper {
+    margin: 0px auto;
+    max-width: 1200px;
 }
 
-.main_profile{
-    margin: 3em 3em 3em 3em;
+.wrapper hr {
+    margin: 0;
+}
+
+.forms {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: start;
+    justify-content: space-around;
 }

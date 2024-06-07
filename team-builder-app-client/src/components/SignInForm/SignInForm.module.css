@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: auto;
+    align-items: center;
+}
+
+.wrapper input {
+    width: 250px;
+    height: 50px;
+    border: 1px solid blue;
+    background-color: rgba(0, 150, 255, 0.3);
+    border-radius: 10px;
+    padding-left: 25px;
+}
+
+.wrapper input:hover {
+    background-color: rgba(0, 150, 255, 0.5);
+}

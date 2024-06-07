@@ -1,19 +1,8 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    gap:20px
-}
-.col{
-    display: flex;
-    flex-direction: column;
-    gap:20px
-}
-
-.user_form_main{
-    margin-right: 3em;
-    margin-left: 3em;
-    border: 1px solid grey;
-    border-radius: 2%;
-    padding: 3em 3em 3em 3em;
-    width: 25em;
+.wrapper form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 500px));
+    gap: 25px;
+    padding: 0px 40px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 50px;
 }

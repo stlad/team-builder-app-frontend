@@ -62,6 +62,8 @@ const HardSkills = () => {
                 <Box >
                     <InputLabel id="demo-simple-select-label">Компетенции</InputLabel>
                     <Select
+                        className={classes.select}
+                        // style={{ border: "2px solid bjue" }}
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={selectedRole}
@@ -95,7 +97,7 @@ const HardSkills = () => {
             {/* 
             <p><NavLink to='/' >На главную</NavLink></p>
             <p><NavLink to='/' >Назад</NavLink></p> */}
-            <p><NavLink to='/belbin' >Тест Белбина</NavLink></p>
+            {/* <p><NavLink to='/belbin' >Тест Белбина</NavLink></p> */}
 
         </div>
     )

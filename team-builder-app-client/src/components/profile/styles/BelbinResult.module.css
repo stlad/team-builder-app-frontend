@@ -1,22 +1,7 @@
-.row{
-    display: flex;
-    flex-direction: row;
-    gap:20px
-}
-.col{
-    display: flex;
-    flex-direction: column;
-    gap:20px
+.belbin_result_main {
+    padding: 25px 40px;
 }
 
-.belbin_result_main{
-    margin-right: 3em;
-    margin-left: 3em;
-    border: 1px solid grey;
-    border-radius: 2%;
-    padding: 3em 3em 3em 3em;
-}
-
-.role_descr{
-    text-align: left;
+.belbin_result_main button {
+    margin-top: 25px;
 }

@@ -20,7 +20,7 @@ const SignInForm = () => {
 
 
     const login = () => {
- 
+
         securityUtils.login(email, password);
         navigate('/')
 
@@ -30,16 +30,16 @@ const SignInForm = () => {
 
     return (
 
-        <form className={classes.col}>
-            <input type='text' onChange={(e) => onChangeEmail(e)} value={email} />
-            <input type='password' onChange={(e) => onChangePassword(e)} value={password} />
+        <form className={classes.wrapper}>
+            <input placeholder='логин' type='text' onChange={(e) => onChangeEmail(e)} value={email} />
+            <input placeholder='пароль' type='password' onChange={(e) => onChangePassword(e)} value={password} />
 
-  
+
 
 
 
             <button disabled={email ? false : true} onClick={login}> Войти </button>
-      
+
 
         </form>
         // <Button variant="outlined" onClick={() => navigate("/register")}>Регистрация</Button>

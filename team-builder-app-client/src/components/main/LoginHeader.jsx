@@ -54,7 +54,7 @@ const LoginHeader = () => {
 
             <div>
                 <NavLink to='register'>Зарегистрироваться</NavLink>
-                <span>/</span>
+                <span>{`${' / '}`} </span>
                 <NavLink to='signin'>Войти</NavLink>
             </div>
 
