@@ -32,6 +32,14 @@ const BelbinResult = () => {
             </div>
         )
     }
+    if (result.role === null) {
+        return (
+            <div className={`${classes.belbin_result_main}`}>
+                <p>Тест Белбина еще не пройден</p>
+            <button onClick={() => navigate("/belbin")} >Пройти тест Белбина</button>
+            </div>
+        )
+    }
     return (
         <div className={`${classes.belbin_result_main}`}>
             <h4>{`${result.role?.rusName}:`}</h4>
